@@ -62,3 +62,10 @@ def test_bounds():
     lo, hi = t.bounds()
     assert np.allclose(lo, [-1, -4])
     assert np.allclose(hi, [3, 2])
+
+
+def test_bounds_empty_tree_is_safe():
+    # An empty tree must not raise on min/max of an empty array.
+    lo, hi = Tree(dim=2).bounds()
+    assert np.allclose(lo, [0.0, 0.0])
+    assert np.allclose(hi, [0.0, 0.0])

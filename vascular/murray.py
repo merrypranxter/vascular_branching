@@ -49,9 +49,7 @@ def murray_residual(tree: Tree, exponent: float = 3.0) -> float:
     worst = 0.0
     for idx in range(len(tree)):
         kids = tree.children(idx)
-        if len(kids) < 1 or tree.nodes[idx].parent < 0 and not kids:
-            continue
-        if not kids:
+        if not kids:  # leaves have no junction to check
             continue
         lhs = tree.nodes[idx].radius ** exponent
         rhs = sum(tree.nodes[c].radius ** exponent for c in kids)

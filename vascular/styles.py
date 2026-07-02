@@ -2,8 +2,9 @@
 
 A style bundles the aesthetic choices that make the *same* tree read as an
 artery, a river delta, or a circuit trace: colour map, background, how line
-width scales with radius, and whether junctions are rounded (organic) or
-squared (artificial). Colouring can key off radius, depth, flow, or velocity.
+width scales with radius, and whether vessel ends are rounded (organic) or
+squared (artificial) via ``capstyle``. Colouring can key off radius, depth,
+flow, or velocity.
 """
 
 from __future__ import annotations

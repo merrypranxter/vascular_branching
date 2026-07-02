@@ -10,7 +10,9 @@ from __future__ import annotations
 
 import matplotlib
 
-matplotlib.use("Agg")  # headless-safe default; callers may override before import
+# Headless-safe default, but don't wrestle a backend away from a caller who has
+# already set one (e.g. an interactive notebook) — force=False leaves theirs be.
+matplotlib.use("Agg", force=False)
 
 import matplotlib.pyplot as plt
 import numpy as np

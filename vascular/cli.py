@@ -15,6 +15,7 @@ import argparse
 import numpy as np
 
 from . import (
+    Tree,
     apply_murray,
     compute_flow,
     disc_attractors,
@@ -66,7 +67,7 @@ def build_parser() -> argparse.ArgumentParser:
     return parser
 
 
-def _build_tree(args) -> "object":
+def _build_tree(args) -> Tree:
     rng = np.random.default_rng(args.seed)
     if args.model == "csg":
         return grow_csg(depth=args.depth, branching_angle=args.angle,

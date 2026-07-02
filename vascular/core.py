@@ -99,8 +99,14 @@ class Tree:
         return np.array([n.pos for n in self.nodes])
 
     def bounds(self):
-        """Axis-aligned bounding box as ``(min_corner, max_corner)``."""
+        """Axis-aligned bounding box as ``(min_corner, max_corner)``.
+
+        An empty tree has no extent, so we return a degenerate box at the
+        origin rather than letting ``min``/``max`` raise on an empty array.
+        """
         p = self.positions()
+        if len(p) == 0:
+            return np.zeros(self.dim), np.zeros(self.dim)
         return p.min(axis=0), p.max(axis=0)
 
     def total_length(self) -> float:

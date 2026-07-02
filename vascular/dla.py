@@ -82,10 +82,12 @@ def _walk_until_contact(pos, occupied, g, center, spawn_r, max_walk, stickiness,
 
         pos = pos + _STEPS[rng.integers(4)]
 
-        # Bounce lost walkers back rather than losing them off the lattice.
+        # Abandon walkers that step off the lattice — the next particle spawns
+        # fresh, so there's no need to reflect or wrap them.
         if not (0 <= pos[0] < g and 0 <= pos[1] < g):
             return None
-        if np.linalg.norm(pos - center) > kill_r:
+        # Compare squared distance to avoid a sqrt in this hot inner loop.
+        if (pos[0] - center[0]) ** 2 + (pos[1] - center[1]) ** 2 > kill_r ** 2:
             return None
     return None
 

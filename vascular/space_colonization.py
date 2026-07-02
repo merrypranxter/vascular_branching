@@ -70,7 +70,7 @@ def grow_space_colonization(
         for k in np.where(influenced)[0]:
             n = int(nearest[k])
             d = deltas[k, n]
-            norm = np.linalg.norm(d)
+            norm = nearest_dist[k]  # already the norm of d, computed above
             if norm == 0:
                 continue
             pulls.setdefault(n, np.zeros(2))
@@ -82,7 +82,7 @@ def grow_space_colonization(
             k = int(nearest_dist.argmin())
             n = int(nearest[k])
             d = deltas[k, n]
-            norm = np.linalg.norm(d)
+            norm = nearest_dist[k]  # already the norm of d, computed above
             if norm == 0:
                 break
             pulls[n] = d / norm
