@@ -1,0 +1,20 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.pytest_cache/
+.venv/
+venv/
+
+# Matplotlib / OS noise
+.DS_Store
+
+# Generated images — keep the committed gallery/ set, ignore ad-hoc outputs
+/*.png
+/tree.png
+/dla.png
+/organ.png
+/vascular.png
